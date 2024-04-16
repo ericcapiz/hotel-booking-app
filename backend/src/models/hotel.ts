@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 export type HotelType = {
   _id: string;
-  //double check userId type
-  userId: String;
+  userId: string;
   name: string;
   city: string;
   country: string;

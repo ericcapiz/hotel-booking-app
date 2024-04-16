@@ -45,8 +45,6 @@ router.post(
       const imageUrls = await Promise.all(uploadPromises);
       newHotel.imageUrls = imageUrls;
       newHotel.lastUpdated = new Date();
-      //double check userId
-      newHotel.userId = req.userId;
 
       const hotel = new Hotel(newHotel);
 
