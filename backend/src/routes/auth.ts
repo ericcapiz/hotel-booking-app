@@ -3,7 +3,7 @@ import { check, validationResult } from "express-validator";
 import User from "../models/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import verifyToken from "../middelware/auth";
+import verifyToken from "../middleware/auth";
 
 const router = express.Router();
 
@@ -11,10 +11,7 @@ router.post(
   "/login",
   [
     check("email", "Email is required").isEmail(),
-    check(
-      "password",
-      "Password with 6 or more characters is required"
-    ).isLength({
+    check("password", "Password with 6 or more characters required").isLength({
       min: 6,
     }),
   ],
@@ -25,6 +22,7 @@ router.post(
     }
 
     const { email, password } = req.body;
+
     try {
       const user = await User.findOne({ email });
       if (!user) {
@@ -43,6 +41,7 @@ router.post(
           expiresIn: "1d",
         }
       );
+
       res.cookie("auth_token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
