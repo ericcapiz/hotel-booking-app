@@ -14,7 +14,7 @@ export const DetailsSection = () => {
         Name
         <input
           type="text"
-          className="border rounded w-full py-1  font-normal"
+          className="border rounded w-full py-1 px-2  font-normal"
           {...register("name", { required: "This field is required" })}
         />
         {errors.name && (
@@ -23,11 +23,11 @@ export const DetailsSection = () => {
       </label>
 
       <div className="flex gap-4">
-        <label className="text-gray-700 text-sm font-bold flex-1">
+        <label className="text-gray-700 text-sm font-bold  flex-1">
           City
           <input
             type="text"
-            className="border rounded w-full py-1  font-normal"
+            className="border rounded w-full py-1 px-2 font-normal"
             {...register("city", { required: "This field is required" })}
           />
           {errors.city && (
@@ -38,7 +38,7 @@ export const DetailsSection = () => {
           Country
           <input
             type="text"
-            className="border rounded w-full py-1  font-normal"
+            className="border rounded w-full py-1 px-2 font-normal"
             {...register("country", { required: "This field is required" })}
           />
           {errors.country && (
@@ -50,7 +50,7 @@ export const DetailsSection = () => {
         Description
         <textarea
           rows={10}
-          className="border rounded w-full py-1  font-normal"
+          className="border rounded w-full py-1 px-2  font-normal"
           {...register("description", { required: "This field is required" })}
         />
         {errors.description && (
@@ -62,7 +62,7 @@ export const DetailsSection = () => {
         <input
           type="number"
           min={1}
-          className="border rounded w-full py-1  font-normal"
+          className="border rounded w-full py-1 px-2 font-normal"
           {...register("pricePerNight", { required: "This field is required" })}
         />
         {errors.pricePerNight && (

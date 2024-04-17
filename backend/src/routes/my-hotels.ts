@@ -10,7 +10,7 @@ const storage = multer.memoryStorage();
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 5 * 1024 * 1024,
+    fileSize: 5 * 1024 * 1024, // 5MB
   },
 });
 
@@ -30,7 +30,7 @@ router.post(
     .notEmpty()
     .isArray()
     .withMessage("Facilities are required"),
-  upload.array("imageFIles", 6),
+  upload.array("imageFiles", 6),
   async (req: Request, res: Response) => {
     try {
       const imageFiles = req.files as Express.Multer.File[];
@@ -42,10 +42,11 @@ router.post(
         const res = await cloudinary.v2.uploader.upload(dataURI);
         return res.url;
       });
+
       const imageUrls = await Promise.all(uploadPromises);
       newHotel.imageUrls = imageUrls;
       newHotel.lastUpdated = new Date();
-
+      newHotel.userId = req.userId as string;
       const hotel = new Hotel(newHotel);
 
       await hotel.save();
