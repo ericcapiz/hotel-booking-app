@@ -16,7 +16,7 @@ export type HotelType = {
   lastUpdated: Date;
 };
 
-export type HotelSeachResponse = {
+export type HotelSearchResponse = {
   data: HotelType[];
   pagination: {
     total: number;

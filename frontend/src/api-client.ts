@@ -1,6 +1,6 @@
 import { RegisterFormData } from "./pages/Register";
 import { SignInFormData } from "./pages/SignIn";
-import { HotelSeachResponse, HotelType } from "../../backend/src/shared/types";
+import { HotelSearchResponse, HotelType } from "../../backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
@@ -124,7 +124,7 @@ export type SearchParams = {
 };
 export const searchHotels = async (
   searchParams: SearchParams
-): Promise<HotelSeachResponse> => {
+): Promise<HotelSearchResponse> => {
   const queryParams = new URLSearchParams();
   queryParams.append("destination", searchParams.destination || "");
   queryParams.append("checkIn", searchParams.checkIn || "");
